@@ -5,24 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Perfect Diet</title>
   <style>
+    :root {
+      --blue: #00bcd4;
+      --neon-green: #39ff14;
+      --background: #e0f7fa;
+      --dark-text: #1c1c1c;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #e7f9f1);
-      color: #333;
+      background-color: var(--background);
+      color: var(--dark-text);
     }
 
     header {
-      background: linear-gradient(to right, #00c853, #ff9800);
-      color: white;
+      background: linear-gradient(to right, var(--blue), var(--neon-green));
+      color: #fff;
       padding: 30px 20px;
       text-align: center;
+      box-shadow: 0 0 15px var(--neon-green);
     }
 
     header h1 {
       font-size: 2.8rem;
       margin: 0;
       font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
     }
 
     .bmi-section, .tips-section, .quotes-section {
@@ -30,4 +39,227 @@
       text-align: center;
     }
 
-    .bmi-sectio
+    .bmi-section h2, .tips-section h2, .quotes-section h2 {
+      color: var(--blue);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+
+    .dropdowns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .dropdown {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .dropdown label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .dropdown select {
+      padding: 10px 15px;
+      border: 2px solid var(--blue);
+      border-radius: 8px;
+      font-size: 1rem;
+      min-width: 180px;
+      background: #fff;
+      color: #222;
+    }
+
+    #bmi-result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: var(--neon-green);
+      font-weight: bold;
+    }
+
+    .quotes-section {
+      background-color: #e0ffff;
+      font-style: italic;
+    }
+
+    .quotes-section ul {
+      max-width: 700px;
+      margin: 0 auto;
+      list-style-type: "💬 ";
+      padding-left: 30px;
+      text-align: left;
+    }
+
+    .quotes-section li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .quotes-section li:hover {
+      transform: scale(1.03);
+      color: var(--blue);
+    }
+
+    .tips-section ul {
+      list-style-type: square;
+      padding-left: 20px;
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .tips-section li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--blue);
+      color: white;
+      font-size: 1rem;
+      box-shadow: 0 -2px 10px var(--blue);
+    }
+
+    .contact {
+      margin-top: 20px;
+      font-weight: bold;
+      color: var(--neon-green);
+      font-size: 1.2rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: var(--blue);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--neon-green);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0097a7;
+    }
+
+    @media (max-width: 600px) {
+      .dropdowns {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Your Perfect Diet</h1>
+    <p>Eat Well. Feel Better. Live Long.</p>
+  </header>
+
+  <!-- BMI Section -->
+  <div class="bmi-section">
+    <h2>Check Your BMI</h2>
+    <div class="dropdowns">
+      <div class="dropdown">
+        <label for="height">Height (cm)</label>
+        <select id="height">
+          <option>Select</option>
+          <option>150</option>
+          <option>160</option>
+          <option>170</option>
+          <option>180</option>
+          <option>190</option>
+        </select>
+      </div>
+      <div class="dropdown">
+        <label for="weight">Weight (kg)</label>
+        <select id="weight">
+          <option>Select</option>
+          <option>50</option>
+          <option>60</option>
+          <option>70</option>
+          <option>80</option>
+          <option>90</option>
+        </select>
+      </div>
+    </div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div id="bmi-result"></div>
+  </div>
+
+  <!-- Quotes Section -->
+  <div class="quotes-section">
+    <h2>Inspire Your Healthy Journey</h2>
+    <ul>
+      <li>Just for the health of it!</li>
+      <li>Nothing tastes as good as thin feels.</li>
+      <li>Healthy food makes you feel good.</li>
+      <li>Tell me what you eat, and I will tell you who you are.</li>
+      <li>Eat Green. Be Healthy.</li>
+      <li>Eat Good or Die Bad.</li>
+      <li>Put it in the waste – not on your waist.</li>
+      <li>Eat fruits plenty, keep your body healthy.</li>
+    </ul>
+  </div>
+
+  <!-- Diet Tips Section -->
+  <div class="tips-section">
+    <h2>Quick Diet Tips</h2>
+    <ul>
+      <li>Start your day with a protein-rich breakfast.</li>
+      <li>Snack on nuts and fruits, not chips or sweets.</li>
+      <li>Stay hydrated – drink at least 2 liters of water daily.</li>
+      <li>Cut down on sugary drinks and processed food.</li>
+      <li>Include more green vegetables in every meal.</li>
+      <li>Track your portions – don't overeat even healthy food.</li>
+      <li>Move your body – even a walk counts!</li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Your Perfect Diet | Healthy Living Starts Here
+    <div class="contact">
+      📞 Contact us: 9818566076
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function calculateBMI() {
+      const height = document.getElementById('height').value;
+      const weight = document.getElementById('weight').value;
+      const result = document.getElementById('bmi-result');
+
+      if (!height || !weight || height === "Select" || weight === "Select") {
+        result.textContent = "Please select both height and weight.";
+        return;
+      }
+
+      const h = parseFloat(height) / 100;
+      const w = parseFloat(weight);
+      const bmi = w / (h * h);
+      let status = "";
+
+      if (bmi < 18.5) status = "Underweight";
+      else if (bmi < 24.9) status = "Normal";
+      else if (bmi < 29.9) status = "Overweight";
+      else status = "Obese";
+
+      result.textContent = `Your BMI is ${bmi.toFixed(1)} (${status})`;
+    }
+  </script>
+
+</body>
+</html>
