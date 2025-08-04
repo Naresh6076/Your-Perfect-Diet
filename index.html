@@ -2,115 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Perfect Diet By Dietician Preety Yadav</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Perfect Diet | Dietician Preety Yadav</title>
   <style>
-    /* [Same CSS as before, unchanged] */
-    /* ...your entire CSS stays exactly the same... */
+    :root {
+      --main-color: #ff6f61;
+      --accent-color: #48a0dc;
+      --light-bg: #fdf8f6;
+      --text-color: #333;
+      --font: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+      color: var(--text-color);
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .bmi-section, .about-section, .social-section {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .bmi-section h2, .about-section h2 {
+      color: var(--main-color);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--accent-color);
+    }
+
+    .result {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+
+    .social-section a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .social-section a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <header>
-    <span>
-      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=80&q=80" alt="Veggies">
-      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=80&q=80" alt="Veggies">
-      <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=80&q=80" alt="Veggies">
-    </span>
-    <h1>Your Perfect Diet By Dietician Preety Yadav</h1>
+    <h1>Dietician Preety Yadav</h1>
+    <p>Your Perfect Diet Plan Starts Here</p>
   </header>
-  <nav>
-    <button class="active" onclick="showTab('bmi')">BMI Calculator</button>
-    <button onclick="showTab('achievements')">Achievements</button>
-    <button onclick="showTab('tips')">Fitness Tips</button>
-  </nav>
-  <main>
-    <!-- BMI Calculator Tab -->
-    <section id="bmi" class="active">
-      <h2>BMI Calculator</h2>
-      <div class="veggie-images">
-        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=100&q=80" alt="Tomato">
-        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?auto=format&fit=crop&w=100&q=80" alt="Broccoli">
-        <img src="https://images.unsplash.com/photo-1519864604245-cd7e9e1a1a2e?auto=format&fit=crop&w=100&q=80" alt="Carrot">
-      </div>
-      <form class="bmi-form" onsubmit="event.preventDefault(); calculateBMI();">
-        <div>
-          <label for="age">Age (years):</label><br>
-          <input type="number" id="age" min="1" max="120" required>
-        </div>
-        <div>
-          <label for="height">Height (cm):</label><br>
-          <input type="number" id="height" min="50" max="250" required>
-        </div>
-        <div>
-          <label for="weight">Weight (kg):</label><br>
-          <input type="number" id="weight" min="10" max="300" required>
-        </div>
-        <button type="submit">Calculate BMI</button>
-        <div id="bmi-result" class="bmi-result" style="display:none;"></div>
-      </form>
-    </section>
 
-    <!-- Fitness Tips Tab -->
-    <section id="tips">
-      <h2>Fitness Tips</h2>
-      <div class="veggie-images">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=100&q=80" alt="Veggie3">
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=100&q=80" alt="Veggie4">
-      </div>
-      <ol class="tips-list">
-        <li><b>"Take care of your body. It’s the only place you have to live."</b></li>
-        <li><b>"Fitness is not about being better than someone else. It’s about being better than you used to be."</b></li>
-        <li><b>"Health is wealth."</b></li>
-        <li><b>"Your body can stand almost anything. It’s your mind you have to convince."</b></li>
-        <li><b>"Don’t wish for a good body — work for it."</b></li>
-        <li><b>"Discipline is doing what needs to be done, even when you don’t want to do it."</b></li>
-        <li><b>"Train insane or remain the same."</b></li>
-        <li><b>"Strength doesn’t come from what you can do. It comes from overcoming the things you thought you couldn’t."</b></li>
-        <li><b>"Sweat is just fat crying."</b></li>
-        <li><b>"A healthy outside starts from the inside."</b></li>
-        <li><b>"The only bad workout is the one that didn’t happen."</b></li>
-        <li><b>"If it doesn’t challenge you, it doesn’t change you."</b></li>
-        <li><b>"Eat to fuel your body, not to feed your emotions."</b></li>
-        <li><b>"Excuses don’t burn calories."</b></li>
-        <li><b>"One workout at a time. One meal at a time. One day at a time."</b></li>
-      </ol>
-    </section>
-  </main>
+  <section class="about-section">
+    <h2>About Me</h2>
+    <p>Hi, I'm Preety Yadav, a certified dietician with a passion for helping people transform their health through personalized nutrition. With over a decade of experience, I’ve guided thousands to achieve their wellness goals.</p>
+  </section>
+
+  <section class="bmi-section">
+    <h2>BMI Calculator</h2>
+    <form onsubmit="event.preventDefault(); calculateBMI();">
+      <label for="height">Height (in cm)</label>
+      <input type="number" id="height" required>
+
+      <label for="weight">Weight (in kg)</label>
+      <input type="number" id="weight" required>
+
+      <button type="submit">Calculate BMI</button>
+      <div id="bmi-result" class="result" style="display:none;"></div>
+    </form>
+  </section>
+
+  <section class="social-section">
+    <h2>Connect with Me</h2>
+    <p>Instagram: <a href="https://instagram.com/your_perfect_diet" target="_blank">@your_perfect_diet</a></p>
+  </section>
+
   <footer>
-    &copy; 2025 Dietician Preety Yadav &mdash; Your Perfect Diet
+    &copy; 2025 Your Perfect Diet | Designed by Preety Yadav
   </footer>
+
   <script>
-    function showTab(tabId) {
-      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-
-      if (tabId === 'bmi') {
-        document.querySelector('nav button:nth-child(1)').classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-      } else if (tabId === 'achievements') {
-        // Redirect to SAS report
-        window.location.href = "https://analytics.apdcl.org/SASVisualAnalytics/?reportUri=/reports/reports/7c884b2f-02d2-4a49-830f-818c8cfefb3d";
-        return;
-      } else {
-        document.querySelector('nav button:nth-child(3)').classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-      }
-    }
-
     function calculateBMI() {
-      const age = parseInt(document.getElementById('age').value, 10);
-      const heightCm = parseFloat(document.getElementById('height').value);
-      const weightKg = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
       const resultDiv = document.getElementById('bmi-result');
 
-      if (isNaN(age) || isNaN(heightCm) || isNaN(weightKg) || age < 1 || heightCm < 50 || weightKg < 10) {
+      if (!height || !weight || height <= 0 || weight <= 0) {
+        resultDiv.textContent = 'Please enter valid height and weight.';
         resultDiv.style.display = 'block';
-        resultDiv.textContent = 'Please enter valid values for age, height and weight.';
         return;
       }
 
-      const heightM = heightCm / 100;
-      const bmi = weightKg / (heightM * heightM);
+      const heightM = height / 100;
+      const bmi = weight / (heightM * heightM);
       let category = '';
 
       if (bmi < 18.5) category = 'Underweight';
@@ -118,11 +167,8 @@
       else if (bmi < 30) category = 'Overweight';
       else category = 'Obese';
 
+      resultDiv.textContent = `Your BMI is ${bmi.toFixed(1)} (${category})`;
       resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `Your BMI is <b>${bmi.toFixed(1)}</b> (${category}).`;
-
-      if (age < 18) resultDiv.innerHTML += '<br><span style="font-size:0.95em">Note: For children and teenagers, BMI interpretation differs. Please consult a pediatrician.</span>';
-      if (age > 65) resultDiv.innerHTML += '<br><span style="font-size:0.95em">Note: For older adults, BMI may need different interpretation. Consult your healthcare provider.</span>';
     }
   </script>
 </body>
